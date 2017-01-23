@@ -19,16 +19,18 @@ describe Account do
 
   context "as an existing account" do
     describe "#deposit" do
+      before do
+        mony.deposit(1000,"10/01/2012")
+      end
 
       it "should be able to deposit" do
-        mony.deposit(1000,"10/01/2012")
         expect(mony.balance).to eq(1000)
       end
 
       it "should add to the bank statement record" do
-        mony.deposit(1000,"10/01/2012")
         expect(mony.bank_statement).to include(["10/01/2012", "1000.00", "", "1000.00"])
       end
+      
     end
   end
 
