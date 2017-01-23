@@ -14,7 +14,15 @@ describe Account do
     it "should have an empty bank statement" do
       expect(mony.bank_statement).to eq([])
     end
-    
+
+  end
+
+  context "as an existing account" do
+
+    it "should be able to deposit" do
+      mony.deposit(1000)
+      expect(mony.balance).to eq(1000)
+    end
   end
 
 end
