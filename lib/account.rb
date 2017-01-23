@@ -1,3 +1,4 @@
+#Manages bank account
 class Account
   attr_reader :name, :balance, :bank_statement
 
@@ -7,7 +8,9 @@ class Account
     @bank_statement = []
   end
 
-  def deposit(amount)
+  def deposit(amount, date)
     @balance += amount
+    bank_statement.unshift(["#{date}", "%.2f" % amount, "", "%.2f" % balance])  
   end
+
 end
