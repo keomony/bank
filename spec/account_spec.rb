@@ -30,7 +30,19 @@ describe Account do
       it "should add to the bank statement record" do
         expect(mony.bank_statement).to include(["10/01/2012", "1000.00", "", "1000.00"])
       end
-      
+
+    end
+
+    describe "#withdraw" do
+      before do
+        mony.deposit(1000,"10/01/2012")
+        mony.deposit(2000,"13/01/2012")
+      end
+
+      it "should be able to withdraw" do
+        mony.withdraw(500, "14/01/2012")
+        expect(mony.balance).to eq(2500)
+      end
     end
   end
 
