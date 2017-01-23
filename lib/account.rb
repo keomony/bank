@@ -20,9 +20,7 @@ class Account
 
   def print_bank_statement
     print_header_of_bank_statement
-    @bank_statement.each do |statement|
-      puts statement.join("||")
-    end
+    print_content_of_bank_statement
   end
 
   private
@@ -39,6 +37,10 @@ class Account
   def print_header_of_bank_statement
     line_width = 12
     puts " date".ljust(line_width)+ "|| credit".ljust(line_width+2)+ "|| debit".ljust(line_width+2)+ "|| balance"
+  end
+
+  def print_content_of_bank_statement
+    @bank_statement.each{|statement| puts statement.join("||")}
   end
 
 
