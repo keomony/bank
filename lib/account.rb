@@ -9,12 +9,12 @@ class Account
   end
 
   def deposit(amount, date)
-    @balance += amount
+    calculate_balance(amount)
     add_to_bank_statement(date,amount,0,@balance)
   end
 
   def withdraw(amount, date)
-    @balance -= amount
+    calculate_balance(-amount)
     add_to_bank_statement(date,0,amount,@balance)
   end
 
@@ -25,12 +25,13 @@ class Account
 
   private
 
+  def calculate_balance(amount)
+    @balance += amount
+  end
+
   def add_to_bank_statement(date,credit,debit,balance)
-    if credit == 0
-      @bank_statement.unshift([" #{date}", "  ", " #{'%.2f' % debit}", " #{'%.2f' % @balance}"])
-    else
-      @bank_statement.unshift([" #{date}", " #{'%.2f' % credit}", "  ", " #{'%.2f' % @balance}"])
-    end
+    @bank_statement.unshift([" #{date}", "  ", " #{'%.2f' % debit}", " #{'%.2f' % @balance}"]) if credit == 0
+    @bank_statement.unshift([" #{date}", " #{'%.2f' % credit}", "  ", " #{'%.2f' % @balance}"])
   end
 
   def print_header_of_bank_statement
