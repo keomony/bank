@@ -18,10 +18,13 @@ describe Account do
   end
 
   context "as an existing account" do
+    describe "#deposit" do
 
-    it "should be able to deposit" do
-      mony.deposit(1000)
-      expect(mony.balance).to eq(1000)
+      it "should be able to deposit" do
+        mony.deposit(1000)
+        expect(mony.balance).to eq(1000)
+      end
+
     end
   end
 
