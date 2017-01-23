@@ -26,11 +26,10 @@ class Account
   private
 
   def add_to_bank_statement(date,credit,debit,balance)
-    line_width = 12
     if credit == 0
-      @bank_statement.unshift([" #{date}".ljust(line_width), "  ".ljust(line_width), " #{'%.2f' % debit}".ljust(line_width), " #{'%.2f' % @balance}".ljust(line_width)])
+      @bank_statement.unshift([" #{date}", "  ", " #{'%.2f' % debit}", " #{'%.2f' % @balance}"])
     else
-      @bank_statement.unshift([" #{date}".ljust(line_width), " #{'%.2f' % credit}".ljust(line_width), "  ".ljust(line_width), " #{'%.2f' % @balance}".ljust(line_width)])
+      @bank_statement.unshift([" #{date}", " #{'%.2f' % credit}", "  ", " #{'%.2f' % @balance}"])
     end
   end
 
@@ -40,7 +39,8 @@ class Account
   end
 
   def print_content_of_bank_statement
-    @bank_statement.each{|statement| puts statement.join("||")}
+    line_width = 12
+    @bank_statement.each{|statement| puts (statement.map{|column| column.ljust(line_width)}).join("||")}
   end
 
 

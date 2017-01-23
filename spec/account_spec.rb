@@ -27,7 +27,7 @@ describe Account do
       end
 
       it "should add to the bank statement record" do
-        expect(mony_acc.bank_statement).to include([" 10/01/2012 ", " 1000.00    ", "            ", " 1000.00    "])
+        expect(mony_acc.bank_statement).to include([" 10/01/2012", " 1000.00", "  ", " 1000.00"])
       end
 
       it "should increase the bank statement record by 1" do
@@ -49,7 +49,7 @@ describe Account do
 
       it "should add to the bank statement record" do
         mony_acc.withdraw(500, "14/01/2012")
-        expect(mony_acc.bank_statement).to include([" 14/01/2012 ", "            ", " 500.00     ", " 2500.00    "])
+        expect(mony_acc.bank_statement).to include([" 14/01/2012", "  ", " 500.00", " 2500.00"])
       end
 
       it "should increase the bank statement record by 1" do
