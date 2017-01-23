@@ -10,11 +10,12 @@ class Account
 
   def deposit(amount, date)
     @balance += amount
-    bank_statement.unshift(["#{date}", "%.2f" % amount, "", "%.2f" % balance])
+    bank_statement.unshift(["#{date}", "%.2f" % amount, "", "%.2f" % @balance])
   end
 
   def withdraw(amount, date)
     @balance -= amount
+    bank_statement.unshift(["#{date}", "", "%.2f" % amount, "%.2f" % @balance])
   end
 
 end
