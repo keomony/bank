@@ -23,12 +23,17 @@ describe Account do
         mony.deposit(1000,"10/01/2012")
       end
 
+
       it "should be able to deposit" do
         expect(mony.balance).to eq(1000)
       end
 
       it "should add to the bank statement record" do
         expect(mony.bank_statement).to include(["10/01/2012", "1000.00", "", "1000.00"])
+      end
+
+      it "should increase the bank statement record by 1" do
+        expect{mony.deposit(1000, "11/01/2012")}.to change{mony.bank_statement.count}.by(1)
       end
 
     end
@@ -39,6 +44,7 @@ describe Account do
         mony.deposit(2000,"13/01/2012")
       end
 
+
       it "should be able to withdraw" do
         mony.withdraw(500, "14/01/2012")
         expect(mony.balance).to eq(2500)
@@ -47,6 +53,10 @@ describe Account do
       it "should add to the bank statement record" do
         mony.withdraw(500, "14/01/2012")
         expect(mony.bank_statement).to include(["14/01/2012", "", "500.00", "2500.00"])
+      end
+
+      it "should increase the bank statement record by 1" do
+        expect{mony.deposit(1000, "11/01/2012")}.to change{mony.bank_statement.count}.by(1)
       end
     end
   end
